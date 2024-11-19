@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:srt_mock/pages/home/widgets/homewidgets.dart';
 
+//홈페이지의 일반적인 Structure 
 class HomePage extends StatelessWidget{
 
   @override

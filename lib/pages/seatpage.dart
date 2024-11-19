@@ -13,6 +13,7 @@ class SeatPage extends StatefulWidget{
       appBar: AppBar(
         title: const Text('좌석 선택');
       ),
+      
     )
   }
 }

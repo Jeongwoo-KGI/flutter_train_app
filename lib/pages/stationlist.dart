@@ -11,7 +11,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-
+//Column 형태로 보여야 할 역의 이름들 
 class StationList extends StatelessWidget {
   String direction;
 
@@ -42,6 +42,7 @@ class StationList extends StatelessWidget {
   } 
 }
 
+//각 역이름이 적힌 버튼의 모양과 내용지정
 class NameBox extends StatelessWidget{
   String stationName;
   NameBox(this.stationName);
