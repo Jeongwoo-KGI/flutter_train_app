@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /** [기차 좌석 선택 페이지]
@@ -7,23 +8,40 @@ import 'package:flutter/material.dart';
 
 class SeatPage extends StatefulWidget{
   @override
+  State<SeatPage> createState() => _SeatPageState();
+}
+
+class _SeatPageState extends State<SeatPage> {
+  int? selectedRow;
+  int? selectedCol;
+  void onSelected(int rowNum, int colNum){
+    setState((){
+      selectedCol = colNum;
+      selectedRow = rowNum;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text('좌석 선택');
+        title: const Text('좌석 선택'),
       ),
       body: Column(
         children: [
-          SeatLayOut(), //seat layouts to click on
-          SelectionButton(), //bottom most purple
+          SeatLayOut(selectedRow, selectedCol), //seat layouts to click on
+          SelectionButton(selectedRow, selectedCol), //bottom most purple
         ],
       )
-    )
+    );
   }
 }
 
 class SeatLayOut extends StatelessWidget{
+  int columnNumber;
+  int rowNumber;
+
+  SeatLayOut(this.rowNumber, this.columnNumber);
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,5 +98,54 @@ class SeatLayOut extends StatelessWidget{
     );
   }
 
+}
+
+class SelectionButton extends StatelessWidget {
+  int? rowNum;
+  int? colNum;
+
+  SelectionButton(this.rowNum, this.colNum);
+  SizedBox(
+    width:200,
+    height:56,
+    child: ElevatedButton(
+      onPressed: () {
+        showCupertinoDialog<void> (
+          context: context,
+          builder: (BuildContext context) => CupertinoAlertDialog(
+            title: const Text('예매하시겠습니까?'),
+            actions: [
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  '취소',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+              CupertinoDialogAction(
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  '확인',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+      child: Text(
+        '예매하기',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  )
 }
 
