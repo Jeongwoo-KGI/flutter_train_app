@@ -32,9 +32,7 @@ class SeatLayOut extends StatelessWidget{
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [Text('A'), Text('B'), Text(""), Text("C"), Text("D")],)
-          for(int i = 1; i<21; i++){
-            SeatRow(i);
-          },
+        for(int i = 1; i<21; i++) SeatRow(i),
       ],
     )
   }
@@ -43,23 +41,24 @@ class SeatLayOut extends StatelessWidget{
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        SeatBox(),
-        SeatBox(),
-        Expanded(
-          child: Center(
-            child: Text(
-              '$i',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SeatBox(),
+          SeatBox(),
+          Expanded(
+            child: Center(
+              child: Text(
+                '$i',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              ),
-
-          )
-        ),
-        SeatBox(),
-        SeatBox(),
+            )
+          ),
+          SeatBox(),
+          SeatBox(),
+        ],
       ),
     )
   }
