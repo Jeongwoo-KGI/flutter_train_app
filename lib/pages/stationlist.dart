@@ -9,15 +9,55 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 
 class StationList extends StatelessWidget {
+  String direction;
+
+  StationList(this.direction);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold{
+    return Scaffold(
       appBar: AppBar(
-        title: Text(), //ToDo: 출발역/도착역 이름 받아오기
-      )
-    }
+        title: Text(direction), //ToDo: 출발역/도착역 이름 받아오기
+      ),
+      body: Column(
+        children: [
+          NameBox('수서'),
+          NameBox('동탄'),
+          NameBox('평택지제'),
+          NameBox('천안아산'),
+          NameBox('오송'),
+          NameBox('대전'),
+          NameBox('김천구미'),
+          NameBox('동대구'),
+          NameBox('경주'),
+          NameBox('울산'),
+          NameBox('부산'),
+        ],
+      ),
+    );
+  } 
+}
+
+class NameBox extends StatelessWidget{
+  String stationName;
+  NameBox(this.stationName);
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      //ToDo: change the size of the box
+      width: double.infinity,
+      height: 50,
+      child: OutlinedButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+
+        },
+        child: Text(stationName),
+      ),
+    );
   }
 }
