@@ -105,47 +105,51 @@ class SelectionButton extends StatelessWidget {
   int? colNum;
 
   SelectionButton(this.rowNum, this.colNum);
-  SizedBox(
-    width:200,
-    height:56,
-    child: ElevatedButton(
-      onPressed: () {
-        showCupertinoDialog<void> (
-          context: context,
-          builder: (BuildContext context) => CupertinoAlertDialog(
-            title: const Text('예매하시겠습니까?'),
-            actions: [
-              CupertinoDialogAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  '취소',
-                  style: TextStyle(color: Colors.red),
+
+  @override
+  Widget build(BuildContext context) {
+    SizedBox(
+      width:200,
+      height:56,
+      child: ElevatedButton(
+        onPressed: () {
+          showCupertinoDialog<void> (
+            context: context,
+            builder: (BuildContext context) => CupertinoAlertDialog(
+              title: const Text('예매하시겠습니까?'),
+              actions: [
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    '취소',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
-              ),
-              CupertinoDialogAction(
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  '확인',
-                  style: TextStyle(color: Colors.blue),
+                CupertinoDialogAction(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    '확인',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+          );
+        },
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+        child: Text(
+          '예매하기',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-        );
-      },
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-      child: Text(
-        '예매하기',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
         ),
       ),
-    ),
-  )
+    );
+  }
 }
 
