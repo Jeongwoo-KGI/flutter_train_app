@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class selectStation extends StatefulWidget {
+class selectStation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,12 @@ class StationBox extends StatelessWidget {
   String direction;
   String destined;
 
-  StationBox(Text direction, Text destined);
-
+  StationBox(this.direction, this.destined);
+  //this.direction;
+  //this.destined = destined;
   @override
   Widget build(BuildContext context) {
-    Get.put(TextControl4Home());
+    //Get.put(TextControl4Home());
     return SizedBox(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
