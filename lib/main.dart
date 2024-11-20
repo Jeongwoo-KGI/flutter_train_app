@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:srt_mock/pages/home/homepage.dart';
-import 'package:srt_mock/pages/seatpage.dart';
-import 'package:srt_mock/pages/stationlist.dart';
+//import 'package:srt_mock/pages/seatpage.dart';
+//import 'package:srt_mock/pages/stationlist.dart';
 
 void main() {
   runApp(const FlutterTrainApp());
@@ -15,27 +15,46 @@ class FlutterTrainApp extends StatelessWidget{
   //contains information of the overarching design and theme
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       theme: ThemeData(
+
         useMaterial3: true,
+
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.pinkAccent,
+          seedColor: Colors.purple,
           brightness: Brightness.light,
         ),
-        //divideColor: Colors.black38,
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          
+          style: ButtonStyle(
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            ),
+            textStyle: const WidgetStatePropertyAll(
+              TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            backgroundColor: WidgetStatePropertyAll(Colors.purple),
+
+          ),
+
+        ),  
       ),
+
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.pinkAccent,
+          seedColor: const Color.fromARGB(255, 38, 45, 49),
           brightness: Brightness.dark,
         ),
       ),
+
       home: HomePage(),
-      //startStation: StationList('출발역'),
-      //returnStation: StationList('도착역'),
-      //seatselection: SeatPage(),
+
     );
   }
 }

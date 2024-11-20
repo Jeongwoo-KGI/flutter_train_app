@@ -10,43 +10,74 @@ class selectStation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Get.put(textControl4Home());
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        //출발역
-        StationBox('출발역','선택'),
-        //separator column
+    return Container(
+      height: 200,
+      width: double.infinity,
 
-        //도착역
-        StationBox('도착역','선택'),
-      ]
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          ),
+        
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            //출발역
+            StationBox(context,'출발역','선택'),
+            //filler
+            Container(
+              width: 40,
+              height: 2
+            ),
+            //separator column
+            Container(
+              width: 2,
+              color: Colors.grey.shade400,
+              height: 50,
+            ),
+            //filler
+            Container(
+              width: 40,
+              height: 2,
+            ),
+            //도착역
+            StationBox(context,'도착역','선택'),
+          ]
+        ),
+      ),
     );
   }
 }
 
 //역을 선택하는 버튼 모양 정의 및 보여야 할 글
 class StationBox extends StatelessWidget {
+  BuildContext context;
   String direction;
   String destined;
 
-  StationBox(this.direction, this.destined);
+  StationBox(this.context, this.direction, this.destined);
   //this.direction;
   //this.destined = destined;
   @override
   Widget build(BuildContext context) {
     //Get.put(TextControl4Home());
-    return SizedBox(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(direction),
-          Text(destined),
-        ],
-      )
-      
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          direction,
+          style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          destined,
+          style: TextStyle(fontSize:40),
+        ),
+      ],
     );
   }
+
+  //method for changing the values
+
 }
 
 //보여야 할 역 이름 관리

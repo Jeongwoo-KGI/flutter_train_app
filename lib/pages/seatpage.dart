@@ -7,11 +7,16 @@ import 'package:flutter/material.dart';
  */
 
 class SeatPage extends StatefulWidget{
-  @override
-  State<SeatPage> createState() => _SeatPageState();
-}
+  final String departure;
+  final String arrival;
+  SeatPage({super.key,required this.departure,required this.arrival})
 
-class _SeatPageState extends State<SeatPage> {
+  @override
+  State<SeatPage> createState() => SeatPageInfo();
+}
+  //ModalRoute.of(context)!.settings.arguments;
+
+class SeatPageInfo extends State<SeatPage> {
   int? selectedRow;
   int? selectedCol;
   void onSelected(int rowNum, int colNum){
@@ -20,6 +25,9 @@ class _SeatPageState extends State<SeatPage> {
       selectedRow = rowNum;
     });
   }
+  //constructor
+  SeatPageInfo(this.selectedRow, this.selectedCol);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +36,8 @@ class _SeatPageState extends State<SeatPage> {
       ),
       body: Column(
         children: [
-          SeatLayOut(selectedRow, selectedCol), //seat layouts to click on
-          SelectionButton(selectedRow, selectedCol), //bottom most purple
+          SeatLayOut(this.selectedRow, this.selectedCol), //seat layouts to click on
+          SelectionButton(this.selectedRow, this.selectedCol), //bottom most purple
         ],
       )
     );
@@ -78,7 +86,7 @@ class SeatLayOut extends StatelessWidget{
           SeatBox(),
         ],
       ),
-    )
+    );
   }
 
   Widget SeatBox() {
